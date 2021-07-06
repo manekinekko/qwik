@@ -33,6 +33,9 @@ export abstract class BaseInjector implements Injector {
     self?: SELF | null,
     ...rest: REST
   ): Promise<RET> {
+    
+    fn = fn.default || fn;
+      
     if (isInjectedFunction(fn)) {
       try {
         const selfType = fn.$thisType;
